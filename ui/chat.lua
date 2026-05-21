@@ -1,4 +1,5 @@
 -- Chat UI: message history + text input.
+local utf8   = utf8 or require("utf8")
 local client = require("llm.client")
 local cfg    = require("config").llm
 local chat   = {}

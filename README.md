@@ -1,6 +1,10 @@
 # Deploy Local LLM
 
-A Love2D game that runs a local LLM via a bundled `llama-server.exe` (llama.cpp). The LLM binary and model file are large and not included in this repository — follow the steps below to set them up.
+![thumbnail](thumbnail.png)
+
+A Love2D game that runs a local LLM via a bundled `llama-server.exe` (llama.cpp). The LLM binary and model file are kinda large and not included in this repository — follow the steps below to set them up.
+
+To test - on windows you can download the release build which already comes with an enbedded model.
 
 ---
 

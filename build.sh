@@ -23,9 +23,21 @@ for dll in SDL2.dll OpenAL32.dll love.dll lua51.dll mpg123.dll msvcp120.dll msvc
 done
 
 # ── Bundle llama-server + model ───────────────────────────────────────────────
-[ -d "ollama" ]      && cp -r ollama      "build/win/$winFileName/ollama"
+if [ ! -d "ollama" ]; then
+    echo "ERROR: ollama/ folder not found – cannot build Steam zip without llama-server runtime"
+    read -n 1 -s -r -p "Press any key to exit..."
+    exit 1
+fi
+cp -r ollama "build/win/$winFileName/ollama"
 [ -f "model.gguf" ]  && cp model.gguf     "build/win/$winFileName/"
 
 echo "# Done! -> build/win/$winFileName/"
+
+# ── Zip for Steam upload ──────────────────────────────────────────────────────
+echo "# Zipping for Steam upload ..."
+rm -f "build/${winFileName}.zip"
+"$winrar" a -afzip -r -ep1 "build/${winFileName}.zip" "build/win/$winFileName/"
+
+echo "# Steam zip -> build/${winFileName}.zip"
 
 read -n 1 -s -r -p "Press any key to exit..."
